@@ -4,14 +4,4 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>Moonfall</servlet-name>
-  	<display-name>Moonfall</display-name>
-  	<description></description>
-  	<servlet-class>com.cognixia.jump.moonfall.Moonfall</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>Moonfall</servlet-name>
-  	<url-pattern>/Moonfall</url-pattern>
-  </servlet-mapping>
 </web-app>

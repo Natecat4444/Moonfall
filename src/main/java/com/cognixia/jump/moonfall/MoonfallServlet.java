@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognixia.jump.moonfall.ConnectionManager;
 
-@WebServlet("/Moonfall")
+@WebServlet("/MoonfallServlet")
 public class MoonfallServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection conn;

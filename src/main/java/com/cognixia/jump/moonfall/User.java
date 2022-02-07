@@ -3,13 +3,16 @@ package com.cognixia.jump.moonfall;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class User {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	private String username; //defaulted empty
+	private String password;
+	private String FirstName;
+	private String LastName;
+	private int id;
+	
 	User()
 	{
 		username = "user";
@@ -26,13 +29,21 @@ public class User {
 	{
 	Connection con = ConnectionManager.getConnection();
 	PreparedStatement pstmt;
+	ResultSet rs;
 	
 	try {
-		pstmt = con.prepareStatement("select * from address where addres_id = ?"); //add sql statement for checkin if user/pass exist
+		pstmt = con.prepareStatement("select FirstName, LastName from User where Email = ? AND UserPassword = ?");
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			this.FirstName = rs.getString("FirstName");
+			this.LastName = rs.getString("LastName");
+			this.id = rs.getInt("UserID");
+			return true;
+		}
+		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-//	rs = stmt.executeQuery("select * from address"); //no need for semicolon
 
 
 	return false;
@@ -41,6 +52,24 @@ public class User {
 
 	//Getters and setters
 	
+	public String getFirstName() {
+		return FirstName;
+	}
+	public void setFirstName(String firstName) {
+		FirstName = firstName;
+	}
+	public String getLastName() {
+		return LastName;
+	}
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -54,10 +83,6 @@ public class User {
 		this.password = password;
 	}
 
-
-
-	private String username = ""; //defaulted empty
-	private String password = ""; //defaulted empty
 	
 	
 }

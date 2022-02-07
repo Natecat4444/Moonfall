@@ -12,13 +12,14 @@ import com.cognixia.jump.moonfall.ConnectionManager;
 
 public class ConnectionManagerTest {
 	
+	private static Connection connection= null;
+	
 	@Test
 	public void MakeConnectionTest() {
-		Connection conn;
-		conn = ConnectionManager.getConnection();
-		assertNotNull(conn);
+		connection = ConnectionManager.getConnection();
+		assertNotNull(connection);
 		try {
-			conn.close();
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

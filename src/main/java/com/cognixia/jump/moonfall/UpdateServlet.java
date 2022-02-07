@@ -56,7 +56,7 @@ public class UpdateServlet extends HttpServlet {
 		
 		Show show = new Show(request.getParameter("show"));
 		int progress = Integer.parseInt(request.getParameter("progress"));
-		System.out.println(show.getShowID());
+		System.out.println(show.getTitle());
 		
 		User_Show us = new User_Show(user.getId(), show.getShowID());
 		us.setProgress(progress);
@@ -100,7 +100,7 @@ public class UpdateServlet extends HttpServlet {
 			pw.println("<label>Show Title<select name = show>");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pw.println("<option value = "+rs.getString("Title")+">"+rs.getString("Title")+"</option>");
+				pw.println("<option value = '"+rs.getString("Title")+"'>"+rs.getString("Title")+"</option>");
 			}
 			pw.println("</select></label> <br />");
 			pw.println("<label> Select new Progress <select name='progress'>");
@@ -125,7 +125,7 @@ public class UpdateServlet extends HttpServlet {
 			pw.println("</select></label> <br />");
 			pw.println("<label> Select new Progress <select name='progress'>");
 			pw.println("<option value='1'>Plan to Watch</option>");
-			pw.println("<option value='2'>In progress</option>");
+			pw.println("<option value='2'>Currently Watching</option>");
 			pw.println("<option value='3'>Completed</option>");
 			pw.println("<option value='4'>Dropped</option>");
 			pw.println("</select></label> <br />");

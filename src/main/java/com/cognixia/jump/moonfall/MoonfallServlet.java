@@ -114,12 +114,12 @@ public class MoonfallServlet extends HttpServlet {
 			pw.println("<label>Show Title<select name = show>");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pw.println("<option value = "+rs.getString("Title")+">"+rs.getString("Title")+"</option>");
+				pw.println("<option value = '"+rs.getString("Title")+"'>"+rs.getString("Title")+"</option>");
 			}
 			pw.println("</select></label> <br />");
 			pw.println("<label> Select new Progress <select name='progress'>");
 			pw.println("<option value='1'>Plan to Watch</option>");
-			pw.println("<option value='2'>In progress</option>");
+			pw.println("<option value='2'>Currently Watching</option>");
 			pw.println("<option value='3'>Completed</option>");
 			pw.println("<option value='4'>Dropped</option>");
 			pw.println("</select></label> <br />");
@@ -130,11 +130,11 @@ public class MoonfallServlet extends HttpServlet {
 			pstmt.setInt(1, userId);
 			
 			pw.println("<h2>Add new show</h2>");
-			pw.println("<form Action='UpdateServlet' method='POST'>");
+			pw.println("<form Action='AddNewServlet' method='POST'>");
 			pw.println("<label>Show Title<select name = 'show'>");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pw.println("<option value = "+rs.getString("Title")+">"+rs.getString("Title")+"</option>");
+				pw.println("<option value = '"+rs.getString("Title")+"'>"+rs.getString("Title")+"</option>");
 			}
 			pw.println("</select></label> <br />");
 			pw.println("<label> Select new Progress <select name='progress'>");

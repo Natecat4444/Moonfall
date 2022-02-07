@@ -32,7 +32,7 @@ public class Show {
 		}
 
 		public void setShowID(int showID) {
-			ShowID = showID;
+			this.ShowID = showID;
 		}
 		
 		public void fetch() {
@@ -40,12 +40,15 @@ public class Show {
 			PreparedStatement stmt;
 			ResultSet rs;
 			
+			System.out.println("Fetch called");
+			
 			try {
 				stmt = conn.prepareStatement("SELECT ShowID from Shows WHERE Title=?");
 				stmt.setString(1, Title);
 				rs = stmt.executeQuery();
 				if(rs.next()) {
 					this.ShowID = rs.getInt("ShowID");
+					System.out.println(rs.toString());
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();

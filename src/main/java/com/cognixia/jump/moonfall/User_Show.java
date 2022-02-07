@@ -1,5 +1,9 @@
 package com.cognixia.jump.moonfall;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class User_Show {
 	int UserID;
 	int ShowID;
@@ -35,5 +39,27 @@ public class User_Show {
 		Progress = progress;
 	}
 	
+	public int insert() {
+		PreparedStatement stmt;
+		Connection conn = ConnectionManager.getConnection();
+		int result = 0;
+		try {
+			stmt = conn.prepareStatement("Insert into User_Show(UserID, ShowID, Progress) values(?,?,?)");
+			stmt.setInt(1, UserID);
+			stmt.setInt(2, ShowID);
+			stmt.setInt(3, Progress);
+			result = stmt.executeUpdate(); 
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	}
 	
+	public int update() {
+		int result = 0;
+		
+		return result;
+	}
 }

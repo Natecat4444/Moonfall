@@ -64,8 +64,7 @@ public class MoonfallServlet extends HttpServlet {
 			System.exit(1);
 		}
 
-		String progress = null;
-		boolean retrieved = false;
+
 		
 		try {
 			int userId = user.getId();
@@ -88,10 +87,7 @@ public class MoonfallServlet extends HttpServlet {
 			pw.println("</body>");
 			pw.println("</html>");
 			
-			rs.next();
-			progress = rs.getString("progress");
 			
-			retrieved = true;
 			rs.close();
 			
 		} catch(SQLException e){

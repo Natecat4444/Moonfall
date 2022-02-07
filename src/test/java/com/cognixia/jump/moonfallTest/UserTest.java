@@ -2,22 +2,22 @@ package com.cognixia.jump.moonfallTest;
 
 
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import com.cognixia.jump.moonfall.User;
 
 public class UserTest {
 
-	@BeforeClass
+	@BeforeAll
 	public static void SetUpConnection() {
 		
 	}
 	
-	@AfterClass
+	@AfterAll
 	public static void TakeDownConnection() {
 		
 	}

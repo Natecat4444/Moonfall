@@ -129,7 +129,7 @@ public class MoonfallServlet extends HttpServlet {
 			pw.println("</select></label> <br />");
 			pw.println("<label> Select new Progress <select name='progress'>");
 			pw.println("<option value='1'>Plan to Watch</option>");
-			pw.println("<option value='2'>In progress</option>");
+			pw.println("<option value='2'>Currently Watching</option>");
 			pw.println("<option value='3'>Completed</option>");
 			pw.println("<option value='4'>Dropped</option>");
 			pw.println("</select></label> <br />");

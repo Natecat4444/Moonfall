@@ -16,7 +16,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import com.cognixia.jump.moonfall.ConnectionManager;
-import com.cognixia.jump.moonfall.Show;
 import com.cognixia.jump.moonfall.User;
 
 public class UserTest {
@@ -76,6 +75,22 @@ public class UserTest {
 		int testInt = -1;
 		testUser.setId(testInt);
 		assertEquals(testInt,testUser.getId());
+	}
+	
+	@Test
+	public void TestUsername() {
+		User testUser = new User();
+		String testUsername = "Carmelo";
+		testUser.setUsername(testUsername);
+		assertTrue(testUser.getUsername().equals(testUsername));
+	}
+	
+	@Test
+	public void TestPassword() {
+		User testUser = new User();
+		String testPassword = "#StayMe7o";
+		testUser.setPassword(testPassword);
+		assertTrue(testUser.getPassword().equals(testPassword));
 	}
 	
 }

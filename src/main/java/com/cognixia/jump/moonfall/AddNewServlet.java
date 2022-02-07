@@ -27,14 +27,8 @@ public class AddNewServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		try {
 			conn = ConnectionManager.getConnection();
-			pstmt = conn.prepareStatement("select Shows.Title, User_Show.Progress, Progress.ProgressStatus\n"
-					+ "from Shows\n"
-					+ "join User_Show\n"
-					+ "on Shows.ShowID = User_Show.ShowID\n"
-					+ "join Progress\n"
-					+ "on User_Show.Progress = Progress.ProgressID\n"
-					+ "where User_Show.UserID = ?");
-		}catch(SQLException e) {
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -54,6 +48,19 @@ public class AddNewServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		User user = UserHolder.getUser();
+		
+		try {
+			pstmt = conn.prepareStatement("select Shows.Title, User_Show.Progress, Progress.ProgressStatus\n"
+					+ "from Shows\n"
+					+ "join User_Show\n"
+					+ "on Shows.ShowID = User_Show.ShowID\n"
+					+ "join Progress\n"
+					+ "on User_Show.Progress = Progress.ProgressID\n"
+					+ "where User_Show.UserID = ?");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		Show show = new Show(request.getParameter("show"));
 		int progress = Integer.parseInt(request.getParameter("progress"));

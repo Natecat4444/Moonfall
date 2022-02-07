@@ -71,8 +71,9 @@ public class User_Show {
 		Connection conn = ConnectionManager.getConnection();
 		try {
 			stmt = conn.prepareStatement("UPDATE User_Show Set Progress =? where UserID =? and ShowID=?");
-			stmt.setInt(1, UserID);
-			stmt.setInt(2, ShowID);
+			stmt.setInt(1, Progress);
+			stmt.setInt(2, UserID);
+			stmt.setInt(3, ShowID);
 			result = stmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

@@ -72,6 +72,21 @@ public class MoonfallServlet extends HttpServlet {
 			pstmt.setInt(1, userId);
 			
 			ResultSet rs = pstmt.executeQuery();
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("<title>Moonfall Streaming</title>");
+			pw.println("</head>");
+			pw.println("<body>");
+			pw.println("<table>");
+			pw.println("<tr> <th>Title</th> <th>Progress</th></tr>");
+			
+			while(rs.next()) {
+				pw.println("<tr> <td>"+rs.getString("Title")+"</td> <td>"+rs.getString("Progress")+"</td> </tr>");
+			}
+			
+			pw.println("</table>");
+			pw.println("</body>");
+			pw.println("</html>");
 			
 			rs.next();
 			progress = rs.getString("progress");
@@ -83,27 +98,6 @@ public class MoonfallServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(retrieved) {
-			pw.println("<html>");
-			pw.println("<head>");
-			pw.println("<title>Moonfall Streaming</title>");
-			pw.println("</head>");
-			pw.println("<body>");
-			pw.println("<ul>");
-			pw.println("<ls>"+ progress + "</ls>");
-			pw.println("<ul>");
-			pw.println("</body>");
-			pw.println("</html>");
-		}else {
-			pw.println("<html>");
-			pw.println("<head>");
-			pw.println("<title>MoonfallServlet</title>");
-			pw.println("</head>");
-			pw.println("<body>");
-			pw.println("<h1>ERR:</h1>");
-			pw.println("</body>");
-			pw.println("</html>");
-		}
 	}
 	
 }

@@ -26,14 +26,8 @@ public class MoonfallServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		try {
 			conn = ConnectionManager.getConnection();
-			pstmt = conn.prepareStatement("select Shows.Title, User_Show.Progress, Progress.ProgressStatus\n"
-					+ "from Shows\n"
-					+ "join User_Show\n"
-					+ "on Shows.ShowID = User_Show.ShowID\n"
-					+ "join Progress\n"
-					+ "on User_Show.Progress = Progress.ProgressID\n"
-					+ "where User_Show.UserID = ?");
-		}catch(SQLException e) {
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -55,6 +49,19 @@ public class MoonfallServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
+		
+		try {
+			pstmt = conn.prepareStatement("select Shows.Title, User_Show.Progress, Progress.ProgressStatus\n"
+					+ "from Shows\n"
+					+ "join User_Show\n"
+					+ "on Shows.ShowID = User_Show.ShowID\n"
+					+ "join Progress\n"
+					+ "on User_Show.Progress = Progress.ProgressID\n"
+					+ "where User_Show.UserID = ?");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 
 		User user = new User(request.getParameter("username"), request.getParameter("password"));

@@ -115,7 +115,7 @@ public class UpdateServlet extends HttpServlet {
 			pw.println("<option value='3'>Completed</option>");
 			pw.println("<option value='4'>Dropped</option>");
 			pw.println("</select></label> <br />");
-			pw.println("<input type=\"submit\" class=\"button\" value=\"Login\">");
+			pw.println("<input type=\"submit\" class=\"button\" value=\"Update\">");
 			pw.println("</form> <br />");
 			
 			pstmt = conn.prepareStatement("select Shows.Title from Shows join User_Show on Shows.ShowID = User_Show.ShowID where User_Show.UserID != ?");
@@ -135,7 +135,7 @@ public class UpdateServlet extends HttpServlet {
 			pw.println("<option value='3'>Completed</option>");
 			pw.println("<option value='4'>Dropped</option>");
 			pw.println("</select></label> <br />");
-			pw.println("<input type=\"submit\" class=\"button\" value=\"Login\">");
+			pw.println("<input type=\"submit\" class=\"button\" value=\"Add\">");
 			pw.println("</form> <br />");
 			
 			pw.println("</body>");

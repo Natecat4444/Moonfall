@@ -14,17 +14,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cognixia.jump.moonfall.ConnectionManager;
-
-@WebServlet("/MoonfallServlet")
-public class MoonfallServlet extends HttpServlet {
+/**
+ * Servlet implementation class UpdateServlet
+ */
+@WebServlet("/UpdateServlet")
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection conn;
 	private PreparedStatement pstmt;
-	
-	
-	public void init(ServletConfig config) throws ServletException {
-		try {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UpdateServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    
+    public void init(ServletConfig config) throws ServletException {
+    	try {
 			conn = ConnectionManager.getConnection();
 			pstmt = conn.prepareStatement("select Shows.Title, User_Show.Progress, Progress.ProgressStatus\n"
 					+ "from Shows\n"
@@ -36,36 +44,22 @@ public class MoonfallServlet extends HttpServlet {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	}
+    }
 
-	public void destroy() {
-		try {
-			pstmt.close();
-			conn.close();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-	}
-
-    
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//	}
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
+		User user = UserHolder.getUser();
 		
-
-		User user = new User(request.getParameter("username"), request.getParameter("password"));
-		boolean loggedin = user.login();
-		UserHolder.setUser(user);
+		Show show = new Show(request.getParameter("show"));
+		int progress = Integer.parseInt(request.getParameter("progress"));
 		
-		if(!loggedin) {
-			System.exit(1);
-		}
-
-
+		User_Show us = new User_Show(user.getId(), show.getShowID());
+		us.setProgress(progress);
+		us.update();
 		
 		try {
 			int userId = user.getId();
@@ -138,16 +132,19 @@ public class MoonfallServlet extends HttpServlet {
 			
 			pw.println("</body>");
 			pw.println("</html>");
-			
-			
-			
-			
-			rs.close();
-			
-		} catch(SQLException e){
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
+	public void destroy() {
+		try {
+			
+			pstmt.close();
+			conn.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+
 }

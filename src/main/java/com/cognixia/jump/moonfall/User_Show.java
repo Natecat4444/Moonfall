@@ -14,6 +14,13 @@ public class User_Show {
 		this.ShowID = ShowID;
 		Progress = 0;
 	}
+	
+	public User_Show(int UserID, int ShowID, int Progress) {
+		this.UserID = UserID;
+		this.ShowID = ShowID;
+		this.Progress = Progress;
+		insert();
+	}
 
 	public int getUserID() {
 		return UserID;
@@ -37,6 +44,7 @@ public class User_Show {
 
 	public void setProgress(int progress) {
 		Progress = progress;
+		update();
 	}
 	
 	public int insert() {
@@ -59,7 +67,17 @@ public class User_Show {
 	
 	public int update() {
 		int result = 0;
-		
+		PreparedStatement stmt;
+		Connection conn = ConnectionManager.getConnection();
+		try {
+			stmt = conn.prepareStatement("UPDATE User_Show Set Progress =? where UserID =? and ShowID=?");
+			stmt.setInt(1, UserID);
+			stmt.setInt(2, ShowID);
+			result = stmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
 		return result;
 	}
 }

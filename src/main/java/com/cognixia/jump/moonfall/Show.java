@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Show {
 
 		private String Title;
-		private static int ShowID;
+		private int ShowID;
 		
 		public Show() {
 			
@@ -16,6 +16,7 @@ public class Show {
 		
 		public Show(String Title) {
 			this.Title = Title;
+			fetch();
 		}
 
 		public String getTitle() {
@@ -26,11 +27,11 @@ public class Show {
 			Title = title;
 		}
 
-		public static int getShowID() {
+		public int getShowID() {
 			return ShowID;
 		}
 
-		public static void setShowID(int showID) {
+		public void setShowID(int showID) {
 			ShowID = showID;
 		}
 		

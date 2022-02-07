@@ -1,10 +1,12 @@
-package com.cognixia.jump.moonfall;
+package com.cognixia.jump.moonfallTest;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.cognixia.jump.moonfall.Show;
 
 public class ShowTest {
 

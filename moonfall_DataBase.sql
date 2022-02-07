@@ -72,3 +72,43 @@ select * from Users;
 select * from shows;
 select * from progress;
 select * from user_show;
+
+#code to get user full list of show and progress
+use moonfall;
+select Shows.Title, User_Show.Progress, Progress.ProgressStatus
+from Shows
+join User_Show
+on Shows.ShowID = User_Show.ShowID
+join Progress
+on User_Show.Progress = Progress.ProgressID
+where User_Show.UserID = 2;
+
+#code to get user list of show and progress for PLAN TO WATCH
+use moonfall;
+select Shows.Title, User_Show.Progress, Progress.ProgressStatus
+from Shows
+join User_Show
+on Shows.ShowID = User_Show.ShowID
+join Progress
+on User_Show.Progress = Progress.ProgressID
+where User_Show.UserID = 1 and Progress.ProgressID = 1;
+
+#code to get user list of show and progress for CURENTLY WATCHING
+use moonfall;
+select Shows.Title, User_Show.Progress, Progress.ProgressStatus
+from Shows
+join User_Show
+on Shows.ShowID = User_Show.ShowID
+join Progress
+on User_Show.Progress = Progress.ProgressID
+where User_Show.UserID = 1 and Progress.ProgressID = 2;
+
+#code to get user list of show and progress for COMPLETED
+use moonfall;
+select Shows.Title, User_Show.Progress, Progress.ProgressStatus
+from Shows
+join User_Show
+on Shows.ShowID = User_Show.ShowID
+join Progress
+on User_Show.Progress = Progress.ProgressID
+where User_Show.UserID = 1 and Progress.ProgressID = 3;

@@ -32,7 +32,9 @@ public class User {
 	ResultSet rs;
 	
 	try {
-		pstmt = con.prepareStatement("select FirstName, LastName from User where Email = ? AND UserPassword = ?");
+		pstmt = con.prepareStatement("select UserID, FirstName, LastName from Users where Email = ? AND UserPassword = ?");
+		pstmt.setString(1, username);
+		pstmt.setString(2, password);
 		rs = pstmt.executeQuery();
 		if(rs.next()) {
 			this.FirstName = rs.getString("FirstName");

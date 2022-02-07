@@ -62,6 +62,13 @@ public class MoonfallServlet extends HttpServlet {
 		UserHolder.setUser(user);
 		
 		if(!loggedin) {
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("</head>");
+			pw.println("<body>");
+			pw.println("<h2>Invalid Login</h2>");
+			pw.println("</body>");
+			pw.println("</html>");
 			System.exit(1);
 		}
 

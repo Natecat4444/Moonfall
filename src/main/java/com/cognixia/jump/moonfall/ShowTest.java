@@ -26,5 +26,11 @@ public class ShowTest {
 		assertTrue(fakeShow.equals(testShow.getTitle()));
 	}
 	
+	@Test
+	public void TitleConstructor() {
+		String fakeShow = "Gold Case";
+		Show testShow = new Show(fakeShow);
+		assertTrue(fakeShow.equals(testShow.getTitle()));
+	}
 	
 }

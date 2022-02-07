@@ -16,6 +16,7 @@ public class UserDAO implements DAOinterface {
 		return null;
 	}
 
+	//Check if user exists in database, if not: create new entry.
 	@Override
 	public boolean addUser(User u) {
 		// TODO Auto-generated method stub

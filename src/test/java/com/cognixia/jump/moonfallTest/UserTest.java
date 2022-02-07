@@ -1,6 +1,8 @@
 package com.cognixia.jump.moonfallTest;
 
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

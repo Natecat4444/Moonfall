@@ -12,7 +12,7 @@ import com.cognixia.jump.moonfall.ConnectionManager;
 public class ConnectionManagerTest {
 	
 	@Test
-	void MakeConnectionTest() {
+	public void MakeConnectionTest() {
 		Connection conn;
 		conn = ConnectionManager.getConnection();
 		assertNotNull(conn);

@@ -73,7 +73,17 @@ public class MoonfallServlet extends HttpServlet {
 			
 			ResultSet rs = pstmt.executeQuery();
 			pw.println("<html>");
+			
+
 			pw.println("<head>");
+			pw.println("<style>");
+			pw.println("body {background-color: powderblue;}");
+			pw.println("table, th, td {border: 1px solid black;");
+			pw.println("background: linear-gradient(#EFCBF1, #9198e5);");
+			pw.println(" th {font-weight: bold;}");
+			pw.println("</style>");
+			
+			
 			pw.println("<title>Moonfall Streaming</title>");
 			pw.println("</head>");
 			pw.println("<body>");

@@ -94,9 +94,7 @@ public class MoonfallServlet extends HttpServlet {
 			pw.println("<title>Moonfall Streaming</title>");
 			pw.println("</head>");
 			pw.println("<body>");
-			pw.println("<ul>");
-			pw.println("<li><a href='/Update'>Update Show</a></li>");
-			pw.println("</ul>");
+			
 			pw.println("<table>");
 			pw.println("<tr> <th>Title</th> <th>Progress</th></tr>");
 			
@@ -133,7 +131,12 @@ public class MoonfallServlet extends HttpServlet {
 			pw.println("<input type=\"submit\" class=\"button\" value=\"Update\">");
 			pw.println("</form> <br />");
 			
-			pstmt = conn.prepareStatement("select Shows.Title from Shows join User_Show on Shows.ShowID = User_Show.ShowID where User_Show.UserID != ?");
+			pstmt = conn.prepareStatement("select title\n"
+					+ "from Shows\n"
+					+ "where ShowID not in (select ShowID\n"
+					+ "from user_show\n"
+					+ "where UserID = ?\n"
+					+ ")");
 			pstmt.setInt(1, userId);
 			
 			pw.println("<h2>Add new show</h2>");

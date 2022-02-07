@@ -80,7 +80,7 @@ public class MoonfallServlet extends HttpServlet {
 			pw.println("<tr> <th>Title</th> <th>Progress</th></tr>");
 			
 			while(rs.next()) {
-				pw.println("<tr> <td>"+rs.getString("Title")+"</td> <td>"+rs.getString("Progress")+"</td> </tr>");
+				pw.println("<tr> <td>"+rs.getString("Title")+"</td> <td>"+rs.getString("ProgressStatus")+"</td> </tr>");
 			}
 			
 			pw.println("</table>");
